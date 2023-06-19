@@ -3,10 +3,11 @@ import React from 'react'
 const Header = () => {
   return (
     <header>
-        <h1>Product builder</h1>
+        <h1>Product Builder</h1>
+
         <nav>
           <ul>
-            <li className='inline-block'>
+            <li className='inline-block active'>
               <a href="#models">Models</a>
             </li>
             <li className='inline-block'>
@@ -20,6 +21,8 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+
+        <a href='#' className='btn-back'>Article & Download</a>
     </header>
   )
 }

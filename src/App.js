@@ -1,12 +1,13 @@
 import './App.css';
 import React from 'react';
-import Header from './components/Header';
+import Main from './components/Main';
+
 
 function App() {
   return (
-    <div className='product-builder h-screen overflow-hidden'>
-      <Header />
-    </div>
+    <>
+      <Main />
+    </>
   );
 }
 

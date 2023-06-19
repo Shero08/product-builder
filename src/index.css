@@ -6,6 +6,8 @@
 body {
   margin: 0;
   font-family: 'Lato', sans-serif;
+  font-size: 1.6rem;
+  color: #24221f;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -14,60 +16,279 @@ code {
   font-family: 'Lato', sans-serif;
 }
 
-header{
-  display: block;
-  position: fixed;
-  z-index: 3;
+.btn-back {
+  position:relative;
+  display:block;
+  margin-bottom:1em;
+  padding:.8em;
+  background:#5d7c89;
+  color:#fff;
+  text-align:center;
+  border-radius:4px;
+  font-size: 1rem;
+}
+
+.btn-back::before,
+.btn-back::after {
+  content:'';
+  position:absolute;
+  width:10px;
+  height:2px;
+  background:currentColor;
+  left:16px;
+  top:calc(50% - 1px);
+  -webkit-transform-origin:left center;
+  -ms-transform-origin:left center;
+  transform-origin:left center;
+  font-size: 1rem;
+}
+
+.btn-back::before {
+  -webkit-transform:rotate(45deg);
+  -ms-transform:rotate(45deg);
+  /*! transform:rotate(45deg) */
+}
+
+.btn-back::after {
+  -webkit-transform:translateY(1px) rotate(-45deg);
+  -ms-transform:translateY(1px) rotate(-45deg);
+  transform:translateY(1px) rotate(-45deg)
+}
+
+.btn-back:hover {
+  background:#678a98
+}
+
+.btn-back.hide-on-mobile {
+  display:none
+}
+
+.product-step {
+  position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  #visibility: hidden;
+  -webkit-transition: visibility .5s;
+  transition: visibility .5s;
   padding: 0 5%;
-  text-align: center;
 }
 
-header::after {
-  content: '';
-  position: absolute;
-  top: 100%;
+.product-step img {
+  display: block;
+  max-width: 80%;
+  margin: 1.8em auto 2.2em;
+}
+
+.product-step section ul li .single-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: .2em;
+}
+
+.product-step section ul li .single-img {
+  display: block;
+  max-width: 80%;
+  margin: .9em auto;
+}
+
+.product-step section ul li .single-price {
+  display: block;
+  color: #5d7c89;
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
+.product-step section ul > li {
+  padding: 1.5em 0;
+  border: 2px solid #ededed;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  -webkit-transition: border-color .3s;
+  transition: border-color .3s;
+}
+
+footer {
+  position: fixed;
+  z-index: 3;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 70px;
-  background-image: -webkit-linear-gradient(top,white,rgba(255,255,255,0));
-  background-image: linear-gradient(to bottom,white,rgba(255,255,255,0));
+  height: 54px;
+  background: #fff;
+  box-shadow: 0 -2px 24px rgba(0,0,0,.2);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s,-webkit-transform .3s;
 }
 
-header h1 {
-  font-size: 4.8rem;
-  margin: 1.1em auto .76em;
-  font-weight: 700;
+@media only screen and (min-width: 768px){
+  .product-step section ul > li {
+    margin-bottom: 2%;
+  }
 }
 
-header nav a {
-  display: block;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #5d7c89;
-  padding: .7em .8em;
-  border-bottom: 2px solid transparent;
-  -webkit-transition: color .2s,border-color .2s;
-  transition: color .2s,border-color .2s;
+@media only screen and (min-width: 1024px){
+  header{
+    display: block;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 5%;
+    text-align: center;
+  }
+  
+  header::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-image: -webkit-linear-gradient(top,white,rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom,white,rgba(255,255,255,0));
+  }
+
+  .product-builder header h1{
+    font-size: 3rem;
+    margin: .8em auto .5em;
+    font-weight: 700;
+  }
+
+  header nav a {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #5d7c89;
+    padding: .7em .8em;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: color .2s,border-color .2s;
+    transition: color .2s,border-color .2s;
+  }
+  
+  header nav a:hover {
+    color:#ffb500
+   }
+  
+  header nav .active a {
+    border-color:#ffb500;
+    color:#ffb500
+  }
+  
+  header nav .active a:hover {
+    color:#ffb500
+  }
+  
+  header nav.disabled li:not(.active) a {
+    color:rgba(93,124,137,.5)
+  }
+
+  .btn-back {
+    background: 0 0;
+    color: #5d7c89;
+    border: 2px solid #5d7c89;
+  }
+
+  .btn-back:hover {
+    background:#5d7c89;
+    color:#fff
+  }
+
+  .btn-back {
+    display: inline-block;
+    position: absolute;
+    top: 40px;
+    left: 2em;
+    padding: .6em .8em .6em 2em;
+  }
+
+  .product-step section {
+    padding: 220px 0 140px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .product-step section ul > li {
+    cursor: pointer;
+  }
+
+  .product-step section ul > li.selected {
+    border-color: #ffb500;
+  }
+
+  .product-step section ul li .radio {
+    position:relative;
+    display:inline-block;
+    height:30px;
+    width:30px
+  }
+
+  .product-step section ul li .radio::after,
+  .product-step section ul li .radio::before{
+    position:absolute;
+    top:0;
+    left:0;
+    content:'';
+    height:100%;
+    width:100%;
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0);
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden
+  }
+
+  .product-step section ul li .radio::before {
+    border:2px solid #ededed;
+    background:#fff;
+    -webkit-transition:background-color .3s,border-color .3s,-webkit-transform .3s;
+    transition:background-color .3s,border-color .3s,-webkit-transform .3s;
+    transition:background-color .3s,transform .3s,border-color .3s;
+    transition:background-color .3s,transform .3s,border-color .3s,-webkit-transform .3s
+  }
+
+  .product-step section ul li .radio::after {
+    background:url('https://codyhouse.co/demo/product-builder/img/cd-icon-check.svg');
+  } 
+
+  .product-step section ul li .radio::before {
+    border-radius:50%
+  }
+
+  .product-step section ul li .selected .radio::before{
+    background:#ffb500;
+    border-color:#ffb500;
+    -webkit-transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    transform:scale(1.5);
+    -webkit-animation:cd-bounce .5s;
+    animation:cd-bounce .5s
+  }
+
+  footer {
+    height: 100px;
+    padding: 0 2em;
+    box-shadow: 0 0 39px rgba(0,0,0,.1);
+  }
 }
 
-header nav a:hover {
-  color:#ffb500
- }
-
-header nav .active a {
-  border-color:#ffb500;
-  color:#ffb500
+@media only screen and (min-width: 1024px) and (min-height: 850px){
+  .product-step section {
+    max-width: 1200px;
+  }
 }
 
-header nav .active a:hover {
-  color:#ffb500
-}
-
-header nav.disabled li:not(.active) a {
-  color:rgba(93,124,137,.5)
+@media only screen and (min-width: 1480px) and (min-height: 850px){
+  .product-step section {
+    padding: 250px 0 140px;
+  }
 }

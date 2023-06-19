@@ -1,0 +1,79 @@
+[
+  {
+    "id": "01",
+    "brand": "BMW",
+    "model": "i3",
+    "initialPrice": 42400,
+    "images": [
+        "https://codyhouse.co/demo/product-builder/img/product01_col01.jpg",
+        "https://codyhouse.co/demo/product-builder/img/product01_col02.jpg",
+        "https://codyhouse.co/demo/product-builder/img/product01_col03.jpg"
+    ],
+    "colors": [
+      {
+        "color": "white",
+        "price": 0
+      },
+      {
+        "color": "mineral-gray",
+        "price": 550
+      },
+      {
+        "color": "orange-metallic",
+        "price": 550
+      }
+    ],
+    "accessories": [
+        {
+            "name": "BMW Charging Station",
+            "price": 1080
+        },
+        {
+            "name": "BMW Maintenance Program Upgrade",
+            "price": 1895
+        },
+        {
+            "name": "1 Year BMW Maintenance Program Upgrade",
+            "price": 975
+        }
+    ]
+  },
+  {
+    "id": "02",
+    "brand": "BMW",
+    "model": "i8",
+    "initialPrice": 140700,
+    "images": [
+        "https://codyhouse.co/demo/product-builder/img/product02_col01.jpg",
+        "https://codyhouse.co/demo/product-builder/img/product02_col02.jpg"
+    ],
+    "colors": [
+      {
+        "color": "gray-metallic",
+        "price": 0
+      },
+      {
+        "color": "white-pear-metallic",
+        "price": 1800
+      }
+    ],
+    "accessories": [
+        {
+            "name": "BMW Laserlight",
+            "price": 6300
+        },
+        {
+            "name": "BMW Charging Station",
+            "price": 1080
+        },
+        {
+            "name": "BMW Maintenance Program Upgrade",
+            "price": 1895
+        },
+        {
+            "name": "1 Year BMW Maintenance Program Upgrade",
+            "price": 975
+        }
+    ]
+  }
+]
