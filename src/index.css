@@ -72,10 +72,18 @@ code {
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  #visibility: hidden;
+  visibility: hidden;
   -webkit-transition: visibility .5s;
   transition: visibility .5s;
   padding: 0 5%;
+}
+
+.product-step.active {
+  position: relative;
+  z-index: 2;
+  visibility: visible;
+  -webkit-transition: visibility .7s;
+  transition: visibility .7s;
 }
 
 .product-step img {
@@ -244,7 +252,8 @@ footer {
     -webkit-transform:translateZ(0);
     transform:translateZ(0);
     -webkit-backface-visibility:hidden;
-    backface-visibility:hidden
+    backface-visibility:hidden;
+    line-height: 16px !important;
   }
 
   .product-step section ul li .radio::before {
@@ -257,14 +266,14 @@ footer {
   }
 
   .product-step section ul li .radio::after {
-    background:url('https://codyhouse.co/demo/product-builder/img/cd-icon-check.svg');
+    background:url('https://codyhouse.co/demo/product-builder/img/cd-icon-check.svg') no-repeat center center;
   } 
 
   .product-step section ul li .radio::before {
     border-radius:50%
   }
 
-  .product-step section ul li .selected .radio::before{
+  .product-step section ul li.selected .radio::before{
     background:#ffb500;
     border-color:#ffb500;
     -webkit-transform:scale(1.5);
@@ -273,6 +282,27 @@ footer {
     -webkit-animation:cd-bounce .5s;
     animation:cd-bounce .5s
   }
+
+  .product-step section ul li.selected .radio::before {
+    background: 0 0;
+    border-color: #ededed;
+    border-right-color: #ffb500;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation: cd-load .6s infinite;
+    animation: cd-load .6s infinite;
+  }
+
+  .product-step section ul li.selected.loaded .radio::before {
+    background:#ffb500;
+    border-color:#ffb500;
+    -webkit-transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    transform:scale(1.5);
+    -webkit-animation:cd-bounce .5s;
+    animation:cd-bounce .5s
+   }
 
   footer {
     height: 100px;

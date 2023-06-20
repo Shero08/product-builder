@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({selectedProduct}) => {
   return (
     <header>
         <h1>Product Builder</h1>

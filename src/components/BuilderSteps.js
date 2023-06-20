@@ -1,15 +1,21 @@
 import React from 'react'
 import SingleCar from './SingleCar'
 
-const BuilderSteps = (props) => {
+const BuilderSteps = ({handleProductSelect, data, selectedProduct}) => {
   return (
     <ul className='h-full overflow-hidden'>
-        <li className='product-step'>
+        <li className={`product-step active`}>
             <section>
                 <ul className='grid grid-cols-2 gap-12 text-center'>
                     {
-                        props && props.data && props.data.map((product, i) => {
-                            return <SingleCar key={i} carData={product} />        
+                        data && data.map((product, i) => {
+                            return (
+                                <SingleCar 
+                                    key={i} 
+                                    carData={product}
+                                    handleProductSelect={handleProductSelect} 
+                                    selectedProduct={selectedProduct}
+                                />)    
                         })
                     }
                 </ul>

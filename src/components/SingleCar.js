@@ -1,10 +1,22 @@
 import React from 'react'
 
-const SingleCar = ({carData}) => {
+const SingleCar = ({carData, handleProductSelect, selectedProduct}) => {
 
-  console.log(carData);
+  const handleProductClick = () => {
+    let selected;
+
+    if(selectedProduct === null || selectedProduct?.id !== carData.id){
+      selected = carData;
+    } else {
+      selected = null;
+    }
+
+    handleProductSelect(selected);
+  }
+
+  console.log(selectedProduct);
   return (
-    <li>
+    <li onClick={handleProductClick} className={`${selectedProduct?.id === carData.id ? 'selected loaded' : ''}`}>
         <span className='block single-name'>{carData.brand} {carData.model}</span>
         <img className='single-img' src={carData.images[0]} alt={carData.model} />
         <span className='single-price'>from ${carData.initialPrice}</span>
