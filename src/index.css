@@ -136,6 +136,77 @@ footer {
   transition: transform .3s,-webkit-transform .3s;
 }
 
+footer .selected-product {
+  display: block;
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 2em;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s,-webkit-transform .3s;
+}
+
+footer .selected-product img {
+  width: 197px;
+  padding-right: 27px;
+  margin-right: 27px;
+  border-right: 1px solid #e1e1e1;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+  float: left;
+}
+
+footer .selected-product .tot-price {
+  margin-top: 12px;
+  float: left;
+}
+
+footer .selected-product .tot-price span {
+  display: block;
+  color: #5d7c89;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+footer .selected-product .tot-price span.total {
+  color: #24221f;
+  font-size: 2.2rem;
+  margin-top: 4px;
+  line-height: 2.2rem;
+}
+
+footer .footer-nav {
+  box-shadow: none;
+  float: right;
+  width: 265px;
+}
+
+footer .footer-nav .nav-item {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  -webkit-transition: width .2s,opacity .2s;
+  transition: width .2s,opacity .2s;
+  overflow: hidden;
+}
+
+footer .footer-nav .prev {
+  left: 0;
+  color: #5d7c89;
+}
+
+footer .footer-nav .next {
+  z-index: 1;
+  right: 0;
+  background: #ffb500;
+}
+
 @media only screen and (min-width: 768px){
   .product-step section ul > li {
     margin-bottom: 2%;
@@ -309,11 +380,51 @@ footer {
     padding: 0 2em;
     box-shadow: 0 0 39px rgba(0,0,0,.1);
   }
+
+  footer .footer-nav > ul {
+    margin-top: 22px;
+  }
+
+  footer .footer-nav > ul::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  footer .footer-nav .nav-item {
+    position: relative;
+    height: 56px;
+  }
+
+  footer .footer-nav .nav-item.next {
+    width: 194px;
+    border-radius: 2em;
+    float: right;
+    margin-left: 11px;
+  }
+
+  footer .footer-nav .nav-item.prev {
+    width: 56px;
+    border-radius: 50%;
+    background: #ededed;
+    color: transparent;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+  }
 }
 
 @media only screen and (min-width: 1024px) and (min-height: 850px){
   .product-step section {
     max-width: 1200px;
+  }
+
+  footer {
+    height: 120px;
+  }
+
+  footer .footer-nav > ul {
+    margin-top: 32px;
   }
 }
 

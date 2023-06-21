@@ -1,6 +1,11 @@
 import React from 'react'
 
 const SingleCar = ({carData, handleProductSelect, selectedProduct}) => {
+  const numberFormat = (num) => {
+    const number = num;
+    const formattedNumber = new Intl.NumberFormat().format(number);
+    return formattedNumber;
+  }
 
   const handleProductClick = () => {
     let selected;
@@ -19,7 +24,7 @@ const SingleCar = ({carData, handleProductSelect, selectedProduct}) => {
     <li onClick={handleProductClick} className={`${selectedProduct?.id === carData.id ? 'selected loaded' : ''}`}>
         <span className='block single-name'>{carData.brand} {carData.model}</span>
         <img className='single-img' src={carData.images[0]} alt={carData.model} />
-        <span className='single-price'>from ${carData.initialPrice}</span>
+        <span className='single-price'>from ${numberFormat(carData.initialPrice)}</span>
         <div className='radio'></div>
     </li>
   )
