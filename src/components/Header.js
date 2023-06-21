@@ -1,23 +1,29 @@
 import React from 'react'
 
-const Header = ({selectedProduct}) => {
+const Header = ({selectedProduct, isDisabled, showDisableAlert}) => {
+  const handleClickDisabled = () => {
+    if(!isDisabled && selectedProduct === null){
+      showDisableAlert()
+    }
+  }
+
   return (
     <header>
         <h1>Product Builder</h1>
 
-        <nav>
+        <nav className={`${selectedProduct ? '' : 'disabled'}`}>
           <ul>
             <li className='inline-block active'>
-              <a href="#models">Models</a>
+              <a onClick={handleClickDisabled} href="#models">Models</a>
             </li>
             <li className='inline-block'>
-              <a href="#colors">Colors</a>
+              <a onClick={handleClickDisabled} href="#colors">Colors</a>
             </li>
             <li className='inline-block'>
-              <a href='#accessories'>Accessories</a>
+              <a onClick={handleClickDisabled} href='#accessories'>Accessories</a>
             </li>
             <li className='inline-block'>
-              <a href='#summary'>Summary</a>
+              <a onClick={handleClickDisabled} href='#summary'>Summary</a>
             </li>
           </ul>
         </nav>

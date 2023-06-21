@@ -1,35 +1,28 @@
 import React from 'react'
-import SingleCar from './SingleCar'
+import StepOne from './StepOne';
+import StepTwo from './StepTwo';
+import StepThree from './StepThree';
+import StepFour from './StepFour';
 
 const BuilderSteps = ({handleProductSelect, data, selectedProduct}) => {
   return (
     <ul className='h-full overflow-hidden'>
-        <li className={`product-step active`}>
-            <section>
-                <ul className='grid grid-cols-2 gap-12 text-center'>
-                    {
-                        data && data.map((product, i) => {
-                            return (
-                                <SingleCar 
-                                    key={i} 
-                                    carData={product}
-                                    handleProductSelect={handleProductSelect} 
-                                    selectedProduct={selectedProduct}
-                                />)    
-                        })
-                    }
-                </ul>
-            </section>
-        </li>
-        <li className='product-step'>
-            <section></section>
-        </li>
-        <li className='product-step'>
-            <section></section>
-        </li>
-        <li className='product-step'>
-            <section></section>
-        </li>
+        <StepOne 
+            carData={data}
+            handleProductSelect={handleProductSelect} 
+            selectedProduct={selectedProduct}
+        />
+        
+        {selectedProduct ? (
+            <>
+                <StepTwo />
+                <StepThree />
+                <StepFour />
+            </>
+        ) 
+            : ''
+        }
+        
     </ul>
   )
 }

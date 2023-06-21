@@ -5,22 +5,32 @@ import Footer from './Footer';
 import BuilderSteps from './BuilderSteps';
 
 const Main = () => {
-    const [selectedProduct, setSelectedProduct] = useState(null)
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isDisabled, setIsDisabled] = useState(false);
+
     const handleProductSelect = (product) => {
         setSelectedProduct(product);
     };
+
+    const showDisableAlert = () => {
+        setIsDisabled(!isDisabled);
+    }
     
     const data = carData;
     console.log(data);
 
     useEffect(() => {
         console.log(selectedProduct)
-    }, [selectedProduct])
+        console.log(isDisabled);
+        
+    }, [selectedProduct, isDisabled])
 
     return (
         <div className='product-builder h-screen overflow-hidden'>
             <Header
                 selectedProduct={selectedProduct}
+                showDisableAlert={showDisableAlert}
+                isDisabled={isDisabled}
             />    
 
             <div className='h-full relative overflow-hidden'>
@@ -31,7 +41,10 @@ const Main = () => {
                 />
             </div>
 
-            <Footer />
+            <Footer 
+                isDisabled={isDisabled}
+                selectedProduct={selectedProduct}
+            />
         </div>
     )
 }
