@@ -11,15 +11,18 @@
     ],
     "colors": [
       {
-        "color": "white",
+        "color": "White",
+        "name": "white",
         "price": 0
       },
       {
-        "color": "mineral-gray",
+        "color": "Mineral Grey",
+        "name": "grey",
         "price": 550
       },
       {
-        "color": "orange-metallic",
+        "color": "Orange Metallic",
+        "name": "orange",
         "price": 550
       }
     ],
@@ -49,11 +52,13 @@
     ],
     "colors": [
       {
-        "color": "gray-metallic",
+        "color": "Grey Metallic",
+        "name": "grey",
         "price": 0
       },
       {
-        "color": "white-pear-metallic",
+        "color": "white Pearl Metallic",
+        "name": "perl",
         "price": 1800
       }
     ],

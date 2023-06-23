@@ -1,11 +1,11 @@
 import React from 'react';
-import SingleCar from './SingleCar'
+import SingleCar from '../SingleCar'
 
 const StepOne = ({handleProductSelect, carData, selectedProduct}) => {
   return (
-    <li className={`product-step active`}>
+    <li className={`product-step`}>
         <section>
-            <ul className='grid grid-cols-2 gap-12 text-center'>
+            <ul className='grid grid-cols-2 gap-12 text-center options'>
                 {
                     carData && carData.map((product, i) => {
                         return (

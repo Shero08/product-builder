@@ -86,32 +86,42 @@ code {
   transition: visibility .7s;
 }
 
+.move-left section {
+  -webkit-animation:cd-center-to-left .5s 0s backwards;
+  animation:cd-center-to-left .5s 0s backwards
+}
+
+.active.back section {
+  -webkit-animation:cd-left-to-center .5s .2s backwards;
+  animation:cd-left-to-center .5s .2s backwards
+}
+
 .product-step img {
   display: block;
   max-width: 80%;
   margin: 1.8em auto 2.2em;
 }
 
-.product-step section ul li .single-name {
+.product-step section ul.options li .single-name {
   font-size: 2rem;
   font-weight: 700;
   margin-top: .2em;
 }
 
-.product-step section ul li .single-img {
+.product-step section ul.options li .single-img {
   display: block;
   max-width: 80%;
   margin: .9em auto;
 }
 
-.product-step section ul li .single-price {
+.product-step section ul.options li .single-price {
   display: block;
   color: #5d7c89;
   margin-bottom: 1em;
   font-size: 1rem;
 }
 
-.product-step section ul > li {
+.product-step section ul.options > li {
   padding: 1.5em 0;
   border: 2px solid #ededed;
   border-radius: 4px;
@@ -289,7 +299,7 @@ footer .footer-nav .nav-item.next ul::after {
 }
 
 @media only screen and (min-width: 768px){
-  .product-step section ul > li {
+  .product-step section ul.options > li {
     margin-bottom: 2%;
   }
 }
@@ -379,23 +389,23 @@ footer .footer-nav .nav-item.next ul::after {
     margin: 0 auto;
   }
 
-  .product-step section ul > li {
+  .product-step section ul.options > li {
     cursor: pointer;
   }
 
-  .product-step section ul > li.selected {
+  .product-step section ul.options > li.selected {
     border-color: #ffb500;
   }
 
-  .product-step section ul li .radio {
+  .product-step section ul.options li .radio {
     position:relative;
     display:inline-block;
     height:30px;
     width:30px
   }
 
-  .product-step section ul li .radio::after,
-  .product-step section ul li .radio::before{
+  .product-step section ul.options li .radio::after,
+  .product-step section ul.options li .radio::before{
     position:absolute;
     top:0;
     left:0;
@@ -409,7 +419,7 @@ footer .footer-nav .nav-item.next ul::after {
     line-height: 16px !important;
   }
 
-  .product-step section ul li .radio::before {
+  .product-step section ul.options li .radio::before {
     border:2px solid #ededed;
     background:#fff;
     -webkit-transition:background-color .3s,border-color .3s,-webkit-transform .3s;
@@ -418,15 +428,15 @@ footer .footer-nav .nav-item.next ul::after {
     transition:background-color .3s,transform .3s,border-color .3s,-webkit-transform .3s
   }
 
-  .product-step section ul li .radio::after {
+  .product-step section ul.options li .radio::after {
     background:url('https://codyhouse.co/demo/product-builder/img/cd-icon-check.svg') no-repeat center center;
   } 
 
-  .product-step section ul li .radio::before {
+  .product-step section ul.options li .radio::before {
     border-radius:50%
   }
 
-  .product-step section ul li.selected .radio::before{
+  .product-step section ul.options li.selected .radio::before{
     background:#ffb500;
     border-color:#ffb500;
     -webkit-transform:scale(1.5);
@@ -436,7 +446,7 @@ footer .footer-nav .nav-item.next ul::after {
     animation:cd-bounce .5s
   }
 
-  .product-step section ul li.selected .radio::before {
+  .product-step section ul.options li.selected .radio::before {
     background: 0 0;
     border-color: #ededed;
     border-right-color: #ffb500;
@@ -447,7 +457,7 @@ footer .footer-nav .nav-item.next ul::after {
     animation: cd-load .6s infinite;
   }
 
-  .product-step section ul li.selected.loaded .radio::before {
+  .product-step section ul.options li.selected.loaded .radio::before {
     background:#ffb500;
     border-color:#ffb500;
     -webkit-transform:scale(1.5);
