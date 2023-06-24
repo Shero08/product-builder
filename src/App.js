@@ -1,13 +1,16 @@
-import './App.css';
-import React from 'react';
-import Main from './components/Main';
-
+import "./App.css";
+import React from "react";
+import Main from "./components/Main";
+import { CarsProvider } from "./hooks/useCars";
+import { StepsProvider } from "./hooks/useSteps";
 
 function App() {
   return (
-    <>
-      <Main />
-    </>
+    <StepsProvider>
+      <CarsProvider>
+        <Main />
+      </CarsProvider>
+    </StepsProvider>
   );
 }
 

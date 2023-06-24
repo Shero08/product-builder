@@ -1,26 +1,21 @@
-import React from 'react';
-import SingleCar from '../SingleCar'
+import React from "react";
+import SingleCar from "../SingleCar";
+import { useCars } from "../../hooks/useCars";
 
-const StepOne = ({handleProductSelect, carData, selectedProduct}) => {
+const StepOne = () => {
+  const { cars } = useCars();
   return (
-    <li className={`product-step`}>
-        <section>
-            <ul className='grid grid-cols-2 gap-12 text-center options'>
-                {
-                    carData && carData.map((product, i) => {
-                        return (
-                            <SingleCar 
-                                key={i} 
-                                carData={product}
-                                handleProductSelect={handleProductSelect} 
-                                selectedProduct={selectedProduct}
-                            />)    
-                    })
-                }
-            </ul>
-        </section>
+    <li className={`product-step active`}>
+      <section>
+        <ul className="grid grid-cols-2 gap-12 text-center options">
+          {cars &&
+            cars.map((product, i) => {
+              return <SingleCar key={i} carData={product} />;
+            })}
+        </ul>
+      </section>
     </li>
-  )
-}
+  );
+};
 
-export default StepOne
+export default StepOne;

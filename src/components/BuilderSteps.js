@@ -1,37 +1,23 @@
-import React, {useState} from 'react'
-import StepOne from './steps/StepOne';
-import StepTwo from './steps/StepTwo';
-import StepThree from './steps/StepThree';
-import StepFour from './steps/StepFour';
-import './steps/steps.css';
+import React from "react";
+import StepOne from "./steps/StepOne";
+import StepTwo from "./steps/StepTwo";
+import StepThree from "./steps/StepThree";
+import StepFour from "./steps/StepFour";
+import "./steps/steps.css";
+import { useSteps } from "../hooks/useSteps";
 
-const BuilderSteps = ({handleProductSelect, data, selectedProduct}) => {
-    const [buildedProduct, setBuildedProduct] = useState([]);
+const BuilderSteps = () => {
+  const { selectedStep } = useSteps();
+
+  const steps = [StepOne, StepTwo, StepThree, StepFour];
+
+  const Component = steps[selectedStep];
 
   return (
-    <ul className='h-full overflow-hidden'>
-        <StepOne 
-            carData={data}
-            handleProductSelect={handleProductSelect} 
-            selectedProduct={selectedProduct}
-        />
-        
-        {selectedProduct ? (
-            <>
-                <StepTwo 
-                    selectedProduct={selectedProduct}
-                />
-                <StepThree 
-                    selectedProduct={selectedProduct}
-                />
-                <StepFour />
-            </>
-        ) 
-            : ''
-        }
-        
+    <ul className="h-full overflow-hidden">
+      <Component />
     </ul>
-  )
-}
+  );
+};
 
-export default BuilderSteps
+export default BuilderSteps;
