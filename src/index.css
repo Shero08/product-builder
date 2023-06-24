@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+html {
+  font-size:62.5%;
+}
+
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -336,19 +340,19 @@ footer .footer-nav .nav-item.next ul::after {
   }
 
   .product-builder header h1 {
-    font-size: 3rem;
-    margin: 0.8em auto 0.5em;
+    font-size: 3.8rem;
+    margin: 1.1em auto .76em;
     font-weight: 700;
   }
 
   header nav a {
     display: block;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #5d7c89;
-    padding: 0.7em 0.8em;
+    padding: .7em .8em;
     border-bottom: 2px solid transparent;
     -webkit-transition: color 0.2s, border-color 0.2s;
     transition: color 0.2s, border-color 0.2s;

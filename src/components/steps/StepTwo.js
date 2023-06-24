@@ -8,15 +8,17 @@ const StepTwo = () => {
     setSelectedColor,
   } = useCars();
 
+  console.log({currentCar, selectedColor});
+
   return (
     <li className={`product-step active`}>
-      <section>
+      <section key={'step2'}>
         <ul className="previews">
           {currentCar &&
             currentCar.images &&
             currentCar.images.map((img, i) => {
               return (
-                <li className={selectedColor === i ? "selected" : ""}>
+                <li className={selectedColor === i ? "selected" : ""} key={i}>
                   <img key={i} data-img={i} src={img} alt="Product Preview" />
                 </li>
               );

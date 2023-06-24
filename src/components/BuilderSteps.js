@@ -15,7 +15,7 @@ const BuilderSteps = () => {
 
   return (
     <ul className="h-full overflow-hidden">
-      <Component />
+      <Component key={selectedStep} />
     </ul>
   );
 };

@@ -1,23 +1,15 @@
 import { useContext, useState, createContext, useEffect } from "react";
 import cars from "../json/car.json";
 
-export const CarContext = createContext({
-  cars,
-  selectedCar: null,
-  setCurrentCar: () => {},
-  selectedColor: null,
-  setSelectedColor: () => {},
-  selectedExtra: [],
-  setSelectedExtra: () => {},
-});
+export const CarContext = createContext({});
 
 export function useCars() {
   return useContext(CarContext);
 }
 
 export const CarsProvider = ({ children }) => {
-  const [selectedCar, setCurrentCar] = useState();
-  const [selectedColor, setSelectedColor] = useState();
+  const [selectedCar, setCurrentCar] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(0);
   const [selectedExtra, setSelectedExtra] = useState([]);
 
   useEffect(() => {

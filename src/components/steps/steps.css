@@ -177,11 +177,15 @@
         transform: translateY(-50%);
     }
 
-    .accessories .price {
+    .accessories li .price {
         right: 102px;
         margin: 0;
         font-size: 2.2rem;
         color: #24221f;
+    }
+
+    .accessories li .check {
+        right: 32px;
     }
 }
 

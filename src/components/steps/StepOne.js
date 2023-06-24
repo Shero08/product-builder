@@ -5,7 +5,7 @@ import { useCars } from "../../hooks/useCars";
 const StepOne = () => {
   const { cars } = useCars();
   return (
-    <li className={`product-step active`}>
+    <li className={`product-step active`} key={'step-1'}>
       <section>
         <ul className="grid grid-cols-2 gap-12 text-center options">
           {cars &&
