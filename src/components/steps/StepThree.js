@@ -1,22 +1,28 @@
 import React from "react";
 import { useCars } from "../../hooks/useCars";
+import HeaderResponsive from "../HeaderResponsive";
 
 const StepThree = () => {
-  const { selectedCar, selectedAccessories, setSelectedAccessories } = useCars();
+  const { selectedCar, selectedAccessories, setSelectedAccessories, totalPrice, setTotalPrice } = useCars();
 
   const handleSelectAccessories = (accessories) => {
     if (selectedAccessories.some(accessory => accessory.name === accessories.name)) {
       setSelectedAccessories(selectedAccessories.filter(accessory => accessory.name !== accessories.name));
+      setTotalPrice(totalPrice - accessories.price)
     } else {
       setSelectedAccessories([...selectedAccessories, accessories]);
+      setTotalPrice(totalPrice + accessories.price)
     }
   }
 
   console.log(selectedAccessories);
+  console.log(totalPrice);
 
   return (
     <li className={`product-step active`} key={'step-3'}>
       <section>
+        <HeaderResponsive />
+
         <ul className="accessories">
           {selectedCar &&
             selectedCar.accessories &&

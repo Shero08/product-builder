@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useCars } from "../hooks/useCars";
 
 const SingleCar = ({ carData }) => {
-  const { setCurrentCar, selectedCar: currentCar } = useCars();
+  const { setCurrentCar, selectedCar: currentCar, totalPrice, setTotalPrice } = useCars();
   const numberFormat = (num) => {
     const number = num;
     const formattedNumber = new Intl.NumberFormat().format(number);
@@ -16,6 +16,14 @@ const SingleCar = ({ carData }) => {
       setCurrentCar(null);
     }
   };
+
+  useEffect(() => {
+    if(currentCar !== null){
+      setTotalPrice(currentCar.initialPrice)
+    }
+  }, [currentCar, totalPrice])
+
+  console.log(totalPrice);
 
   return (
     <li

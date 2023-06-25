@@ -2,9 +2,13 @@ import React from "react";
 import { useCars } from "../hooks/useCars";
 import { useSteps } from "../hooks/useSteps";
 
-const Footer = ({ isDisabled }) => {
-  const { selectedCar } = useCars();
+const Footer = ({ isDisabled, showDisableAlert }) => {
+  const { cars, selectedCar, selectedColor, totalPrice, setTotalPrice } = useCars();
   const { selectedStep, setCurrentStep, goToPreviousStep } = useSteps();
+
+  const handlePrevClick = () => {
+    goToPreviousStep()
+  }
 
   return (
     <footer
@@ -13,11 +17,11 @@ const Footer = ({ isDisabled }) => {
       }`}
     >
       <div className="selected-product">
-        <img src={selectedCar?.images[0]} alt="Product preview" />
+        <img src={selectedCar ? selectedCar.images[selectedColor] : cars[0].images[0]} alt="Product preview" />
         <div className="tot-price">
           <span>Total</span>
           <span className="total">
-            ${selectedCar ? selectedCar?.initialPrice : 0}
+            ${selectedCar ? totalPrice : 0}
           </span>
         </div>
       </div>
@@ -27,17 +31,17 @@ const Footer = ({ isDisabled }) => {
           <li className="nav-item next">
             <ul>
               <li className={selectedStep === 0 ? "visible" : ""}>
-                <a href="#0" onClick={() => setCurrentStep(1)}>
+                <a href="#0" onClick={selectedCar ? () => setCurrentStep(1) : showDisableAlert}>
                   Colors
                 </a>
               </li>
               <li className={selectedStep === 1 ? "visible" : ""}>
-                <a href="#1" onClick={() => setCurrentStep(2)}>
+                <a href="#1" onClick={selectedCar ? () => setCurrentStep(2) : null}>
                   Accessories
                 </a>
               </li>
               <li className={selectedStep === 2 ? "visible" : ""}>
-                <a href="#2" onClick={() => setCurrentStep(3)}>
+                <a href="#2" onClick={selectedCar ? () => setCurrentStep(3) : null}>
                   Summary
                 </a>
               </li>
@@ -48,7 +52,30 @@ const Footer = ({ isDisabled }) => {
               </li>
             </ul>
           </li>
-          <li className="nav-item prev" onClick={() => goToPreviousStep()}></li>
+          <li className="nav-item prev">
+          <ul>
+              <li className={selectedStep === 0 ? "visible step-1" : "visited"}>
+                <a href="#0">
+                  Colors
+                </a>
+              </li>
+              <li className={selectedStep === 1 ? "visible" : ""}>
+                <a href="#1" onClick={handlePrevClick}>
+                  Accessories
+                </a>
+              </li>
+              <li className={selectedStep === 2 ? "visible" : ""}>
+                <a href="#2" onClick={() => goToPreviousStep()}>
+                  Summary
+                </a>
+              </li>
+              <li className={selectedStep === 3 ? "visible" : ""}>
+                <a href="#3" onClick={() => goToPreviousStep()}>
+                  Buy Now
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
 

@@ -1,18 +1,26 @@
 import React from "react";
 import { useCars } from "../../hooks/useCars";
+import HeaderResponsive from "../HeaderResponsive";
 
 const StepTwo = () => {
   const {
     selectedCar: currentCar,
     selectedColor,
     setSelectedColor,
+    setTotalPrice
   } = useCars();
 
-  console.log({currentCar, selectedColor});
+  const handleColorSelected = (colorIndex) => {
+    setSelectedColor(colorIndex)
+
+    setTotalPrice(currentCar.initialPrice + currentCar?.colors[colorIndex].price)
+  }
 
   return (
     <li className={`product-step active`}>
       <section key={'step2'}>
+        <HeaderResponsive />
+
         <ul className="previews">
           {currentCar &&
             currentCar.images &&
@@ -36,7 +44,7 @@ const StepTwo = () => {
                   key={i}
                 >
                   <a
-                    onClick={() => setSelectedColor(i)}
+                    onClick={() => handleColorSelected(i)}
                     data-color={color.name}
                     href={`#${i}`}
                   >

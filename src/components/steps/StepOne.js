@@ -10,7 +10,7 @@ const StepOne = () => {
       <section>
         <HeaderResponsive />
 
-        <ul className="grid grid-cols-2 gap-12 text-center options">
+        <ul className="grid grid-cols md:grid-cols-2 gap-x-20 gap-y-2 text-center options">
           {cars &&
             cars.map((product, i) => {
               return <SingleCar key={i} carData={product} />;

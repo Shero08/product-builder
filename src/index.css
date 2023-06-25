@@ -3,6 +3,32 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+@-webkit-keyframes cd-left-to-center {
+  0% {
+   opacity:0;
+   -webkit-transform:translateX(-30px);
+   transform:translateX(-30px)
+  }
+  100% {
+   opacity:1;
+   -webkit-transform:translateX(0);
+   transform:translateX(0)
+  }
+}
+
+@keyframes cd-left-to-center {
+  0% {
+   opacity:0;
+   -webkit-transform:translateX(-30px);
+   transform:translateX(-30px)
+  }
+  100% {
+   opacity:1;
+   -webkit-transform:translateX(0);
+   transform:translateX(0)
+  }
+}
+
 html {
   font-size:62.5%;
 }
@@ -91,13 +117,10 @@ header {
   position: relative;
   z-index: 2;
   visibility: visible;
-  -webkit-transition: visibility 0.7s;
-  transition: visibility 0.7s;
-}
-
-.move-left section {
+  transition: visibility 0.7s, transform 0.7s;
   -webkit-animation: cd-center-to-left 0.5s 0s backwards;
   animation: cd-center-to-left 0.5s 0s backwards;
+  -webkit-transition: visibility 0.7s, transform 0.7s;
 }
 
 .active.back section {
@@ -279,18 +302,11 @@ footer {
 }
 
 footer .selected-product {
-  display: block;
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: 2em;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
+  display: none;
+}
+
+footer .alert {
+  display: none;
 }
 
 footer .footer-nav {
@@ -307,6 +323,10 @@ footer .footer-nav {
   -webkit-transition: width 0.2s, opacity 0.2s;
   transition: width 0.2s, opacity 0.2s;
   overflow: hidden;
+}
+
+.footer-nav .prev .step-1 {
+  opacity: 0;
 }
 
 .footer-nav .prev {
@@ -326,6 +346,12 @@ footer .footer-nav .nav-item ul {
   height: 100%;
 }
 
+footer.disabled {
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
 .footer-nav .next:hover {
   background: #ffbc1a;
 }
@@ -342,6 +368,15 @@ footer .footer-nav .nav-item ul::after {
   background: url("https://codyhouse.co/demo/product-builder/img/cd-icon-arrow.svg")
     no-repeat 0 0;
   pointer-events: none;
+}
+
+footer .footer-nav .nav-item.prev ul::after {
+  left: 1em;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(180deg);
+  -ms-transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+  background-position: 0 -16px;
 }
 
 footer .footer-nav .nav-item ul li {
@@ -494,7 +529,7 @@ footer .footer-nav .nav-item.next ul::after {
     position: absolute;
     top: 40px;
     left: 2em;
-    padding: 0.6em 0.8em 0.6em 2em;
+    padding: .8em .8em .8em 2em;
   }
 
   .product-step section {
@@ -509,10 +544,31 @@ footer .footer-nav .nav-item.next ul::after {
     box-shadow: 0 0 39px rgba(0, 0, 0, 0.1);
   }
 
+  footer .selected-product {
+    display: block;
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 2em;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+  }
+
   footer .selected-product::after {
     clear: both;
     content: "";
     display: block;
+  }
+
+  footer.disabled {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
   }
 
   footer.disabled .selected-product {
@@ -583,6 +639,17 @@ footer .footer-nav .nav-item.next ul::after {
     white-space: nowrap;
   }
 
+  footer .footer-nav .nav-item.prev:hover {
+    background:#f2f2f2
+  }
+
+  footer .footer-nav .nav-item.prev ul::after {
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%) rotate(180deg);
+    -ms-transform: translateY(-50%) translateX(-50%) rotate(180deg);
+    transform: translateY(-50%) translateX(-50%) rotate(180deg);
+  }
+
   footer .footer-nav .nav-item ul li {
     text-align: left;
     font-size: 1.4rem;
@@ -606,7 +673,6 @@ footer .footer-nav .nav-item.next ul::after {
     color: #fff;
     padding: 0.8em 1em;
     border-radius: 4px;
-    font-size: 1rem;
   }
 
   footer.disabled.show-alert .alert {
@@ -629,6 +695,10 @@ footer .footer-nav .nav-item.next ul::after {
 }
 
 @media only screen and (min-width: 1480px) and (min-height: 850px) {
+  .product-builder header h1 {
+    font-size: 4.8rem;
+  }
+
   .product-step section {
     padding: 250px 0 140px;
   }

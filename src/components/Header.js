@@ -3,15 +3,9 @@ import { useCars } from "../hooks/useCars";
 import { useSteps } from "../hooks/useSteps";
 
 const Header = ({ isDisabled, showDisableAlert }) => {
+
   const { selectedCar } = useCars();
-
   const { selectedStep, setCurrentStep, goToPreviousStep } = useSteps();
-
-  const handleClickDisabled = (step) => {
-    if (!isDisabled && selectedCar === null) {
-      showDisableAlert();
-    } else setCurrentStep(step);
-  };
 
   return (
     <header>
@@ -20,22 +14,22 @@ const Header = ({ isDisabled, showDisableAlert }) => {
       <nav className={`${selectedCar ? "" : "disabled"}`}>
         <ul>
           <li className={`inline-block ${selectedStep === 0 ? "active" : ""}`}>
-            <a onClick={() => handleClickDisabled(0)} href="#models">
+            <a href="#models" onClick={selectedCar ? () => setCurrentStep(0) : showDisableAlert}>
               Models
             </a>
           </li>
           <li className={`inline-block ${selectedStep === 1 ? "active" : ""}`}>
-            <a onClick={() => handleClickDisabled(1)} href="#colors">
+            <a href="#colors" onClick={selectedCar ? () => setCurrentStep(1) : showDisableAlert}>
               Colors
             </a>
           </li>
           <li className={`inline-block ${selectedStep === 2 ? "active" : ""}`}>
-            <a onClick={() => handleClickDisabled(2)} href="#accessories">
+            <a href="#accessories" onClick={selectedCar ? () => setCurrentStep(2) : showDisableAlert}>
               Accessories
             </a>
           </li>
           <li className={`inline-block ${selectedStep === 3 ? "active" : ""}`}>
-            <a onClick={() => handleClickDisabled(3)} href="#summary">
+            <a href="#summary" onClick={selectedCar ? () => setCurrentStep(3) : showDisableAlert}>
               Summary
             </a>
           </li>

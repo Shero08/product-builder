@@ -23,7 +23,7 @@ const Main = () => {
         <BuilderSteps />
       </div>
 
-      <Footer isDisabled={isDisabled} />
+      <Footer showDisableAlert={showDisableAlert} isDisabled={isDisabled} />
     </div>
   );
 };

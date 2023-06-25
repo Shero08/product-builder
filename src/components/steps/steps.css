@@ -188,6 +188,44 @@
     line-height: 1.6;
 }
 
+.summary .summary-accessories {
+    color: #5d7c89;
+    list-style: disc;
+      list-style-position: outside;
+    list-style-position: inside;
+}
+
+.summary .summary-color::after {
+    clear:both;
+    content:"";
+    display:block
+}
+
+.summary .summary-color>* {
+    float:left
+}
+
+.summary .color-swatch {
+    display:inline-block;
+    height:40px;
+    width:40px;
+    border:2px solid #fff;
+    box-shadow:0 0 0 2px #ededed;
+    border-radius:50%
+}
+
+.summary .color-label {
+    display:inline-block;
+    font-size:1.8rem;
+    margin-top:11px;
+    margin-left:.5em;
+    font-style: normal;
+}
+
+.summary .summary-accessories p {
+    display: inline;
+}
+
 @media only screen and (min-width: 768px){
     .product-color li {
     margin-right: 1em;
@@ -272,6 +310,20 @@
 
     .summary p {
         font-size: 1.8rem;
+    }
+
+    .summary .summary-color {
+        display: inline-block;
+    }
+
+    .summary .color-swatch {
+        height:54px;
+        width:54px
+    }
+
+    .summary .color-label {
+        font-size:2.4rem;
+        margin-top:15px
     }
 }
 

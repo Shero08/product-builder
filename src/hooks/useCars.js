@@ -11,7 +11,7 @@ export const CarsProvider = ({ children }) => {
   const [selectedCar, setCurrentCar] = useState(null);
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedAccessories, setSelectedAccessories] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(selectedCar?.initialPrice);
+  const [totalPrice, setTotalPrice] = useState(null);
 
   useEffect(() => {
     console.log("selectedCar", selectedCar);

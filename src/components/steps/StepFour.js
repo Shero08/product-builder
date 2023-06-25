@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCars } from "../../hooks/useCars";
+import HeaderResponsive from '../HeaderResponsive';
 
 const StepFour = () => {
   const { selectedCar, selectedColor, selectedAccessories } = useCars();
@@ -7,6 +8,8 @@ const StepFour = () => {
   return (
     <li className={`product-step active`} key={'step-4'}>
         <section>
+            <HeaderResponsive />
+
             <ul className='summary'>
                 <li>
                   <h2>Model</h2>
@@ -18,8 +21,8 @@ const StepFour = () => {
                 <li>
                   <h2>Color</h2>
                   <span className='summary-color'>
-                    <em data-color={selectedCar.colors[selectedColor].name}></em>
-                    <em>{selectedCar.colors[selectedColor].color} - ${selectedCar.colors[selectedColor].price}</em>
+                    <em className='color-swatch' data-color={selectedCar.colors[selectedColor].name}></em>
+                    <em className='color-label'>{selectedCar.colors[selectedColor].color} - ${selectedCar.colors[selectedColor].price}</em>
 
                   </span>
                 </li>
@@ -27,9 +30,13 @@ const StepFour = () => {
                 <li>
                   <h2>Accessories</h2>
                   <ul className='summary-accessories'>
-                    {selectedAccessories && selectedAccessories.map((accessory, i) => {
-                      return <li key={i}>{accessory.name}</li>
-                    })}
+                    {selectedAccessories.length > 0 ? (
+                      selectedAccessories.map((accessory, i) => (
+                        <li key={i}><p>{accessory.name}</p></li>
+                      ))
+                    ) : (
+                        <li><p>No Accessories selected;</p></li>
+                    )}
                   </ul>
                 </li>
             </ul>
