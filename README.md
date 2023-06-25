@@ -9,7 +9,7 @@
 <div align="left">
   <a href="https://github.com/Shero08/product-builder">
   </a>
-    <a href="https://github.com/Shero08/capstone-frontend">View Demo</a>
+    <a href="https://main--fastidious-pika-9816aa.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/Shero08/capstone-frontend/issues">Report Bug</a>
   </p>
@@ -20,7 +20,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Questo progetto è un clone della pagina https://codyhouse.co/demo/product-builder/index.html
+Questo progetto è un clone della pagina https://codyhouse.co/demo/product-builder/index.html, fatto in occasione di una esercitazione per una candidatura lavorativa.
 
 <br>
 
