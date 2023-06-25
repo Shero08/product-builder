@@ -11,6 +11,7 @@ body {
   margin: 0;
   font-family: "Lato", sans-serif;
   font-size: 1.6rem;
+  line-height: 1;
   color: #24221f;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -29,7 +30,6 @@ code {
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  font-size: 1rem;
 }
 
 .btn-back::before,
@@ -44,7 +44,6 @@ code {
   -webkit-transform-origin: left center;
   -ms-transform-origin: left center;
   transform-origin: left center;
-  font-size: 1rem;
 }
 
 .btn-back::before {
@@ -65,6 +64,10 @@ code {
 
 .btn-back.hide-on-mobile {
   display: none;
+}
+
+header {
+ display:none
 }
 
 .product-step {
@@ -102,14 +105,47 @@ code {
   animation: cd-left-to-center 0.5s 0.2s backwards;
 }
 
+.product-step header{
+  display: block !important;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.product-step header h1{
+  font-size: 2.4rem;
+}
+
+.product-step header .step-indicator {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  color: #5d7c89;
+}
+
 .product-step img {
   display: block;
   max-width: 80%;
   margin: 1.8em auto 2.2em;
 }
 
+.product-step section {
+  padding: 1.8em 0 3em;
+  opacity: 0;
+  -webkit-animation: cd-center-to-right .5s 0s backwards;
+  animation: cd-center-to-right .5s 0s backwards;
+}
+
+.active section {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-animation: cd-right-to-center .5s .2s backwards;
+  animation: cd-right-to-center .5s .2s backwards;
+}
+
 .product-step section ul.options li .single-name {
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-weight: 700;
   margin-top: 0.2em;
 }
@@ -117,18 +153,108 @@ code {
 .product-step section ul.options li .single-img {
   display: block;
   max-width: 80%;
-  margin: 0.9em auto;
+  margin: 1.8em auto 2.2em;
+}
+
+.product-step section ul.options > li {
+  cursor: pointer;
+}
+
+.product-step section ul.options > li.selected {
+  border-color: #ffb500;
+}
+
+.product-step section ul.options li .radio {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}
+
+.product-step section ul.options li .radio::after,
+.product-step section ul.options li .radio::before,
+.product-step section ul.accessories li .check::after,
+.product-step section ul.accessories li .check::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  line-height: 16px !important;
+}
+
+.product-step section ul.options li .radio::before,
+.product-step section ul.accessories li .check::before {
+  border: 2px solid #ededed;
+  background: #fff;
+  -webkit-transition: background-color 0.3s, border-color 0.3s,
+    -webkit-transform 0.3s;
+  transition: background-color 0.3s, border-color 0.3s, -webkit-transform 0.3s;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s,
+    -webkit-transform 0.3s;
+}
+
+.product-step section ul.options li .radio::before {
+  border-radius: 50%;
+}
+
+.product-step section ul.accessories li .check::before {
+  border-radius: 4px;
+}
+
+.product-step section ul.options li.selected .radio::before,
+.product-step section ul.accessories li.selected .check::before {
+  background: #ffb500;
+  border-color: #ffb500;
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-animation: cd-bounce 0.5s;
+  animation: cd-bounce 0.5s;
+}
+
+.product-step section ul.options li.selected .radio::before {
+  background: 0 0;
+  border-color: #ededed;
+  border-right-color: #ffb500;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-animation: cd-load 0.6s infinite;
+  animation: cd-load 0.6s infinite;
+}
+
+.product-step section ul.options li.selected.loaded .radio::before,
+.product-step section ul.accessories li.selected.loaded .check::before {
+  background: #ffb500;
+  border-color: #ffb500;
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-animation: cd-bounce 0.5s;
+  animation: cd-bounce 0.5s;
 }
 
 .product-step section ul.options li .single-price {
   display: block;
   color: #5d7c89;
   margin-bottom: 1em;
-  font-size: 1rem;
+}
+
+.product-step section ul.options li .radio::after,
+.product-step section ul.accessories li .check::after {
+  background: url("https://codyhouse.co/demo/product-builder/img/cd-icon-check.svg")
+    no-repeat center center;
 }
 
 .product-step section ul.options > li {
-  padding: 1.5em 0;
+  padding: 2.7em 0;
   border: 2px solid #ededed;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -165,45 +291,6 @@ footer .selected-product {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
-}
-
-footer .selected-product img {
-  width: 197px;
-  padding-right: 27px;
-  margin-right: 27px;
-  border-right: 1px solid #e1e1e1;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-  float: left;
-}
-
-footer .selected-product .tot-price {
-  margin-top: 12px;
-  float: left;
-}
-
-footer .selected-product .tot-price span {
-  display: block;
-  color: #5d7c89;
-  font-size: 1rem;
-  line-height: 1rem;
-}
-
-footer .selected-product .tot-price span.total {
-  color: #24221f;
-  font-size: 2.2rem;
-  margin-top: 4px;
-  line-height: 2.2rem;
-}
-
-footer.disabled .selected-product {
-  -webkit-transform: translateX(-224px) translateY(-50%);
-  -ms-transform: translateX(-224px) translateY(-50%);
-  transform: translateX(-224px) translateY(-50%);
-}
-
-footer.disabled .selected-product img {
-  opacity: 0;
 }
 
 footer .footer-nav {
@@ -309,6 +396,18 @@ footer .footer-nav .nav-item.next ul::after {
   .product-step section ul.options > li {
     margin-bottom: 2%;
   }
+
+  .product-step header{
+    margin-bottom: 2em;
+  }
+
+  .product-step header h1{
+    font-size: 4rem;
+  }
+
+  .product-step header .step-indicator {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -375,6 +474,10 @@ footer .footer-nav .nav-item.next ul::after {
     color: rgba(93, 124, 137, 0.5);
   }
 
+  .product-step header {
+    display: none !important;
+  }
+
   .btn-back {
     background: 0 0;
     color: #5d7c89;
@@ -400,91 +503,52 @@ footer .footer-nav .nav-item.next ul::after {
     margin: 0 auto;
   }
 
-  .product-step section ul.options > li {
-    cursor: pointer;
-  }
-
-  .product-step section ul.options > li.selected {
-    border-color: #ffb500;
-  }
-
-  .product-step section ul.options li .radio {
-    position: relative;
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-  }
-
-  .product-step section ul.options li .radio::after,
-  .product-step section ul.options li .radio::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    height: 100%;
-    width: 100%;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    line-height: 16px !important;
-  }
-
-  .product-step section ul.options li .radio::before {
-    border: 2px solid #ededed;
-    background: #fff;
-    -webkit-transition: background-color 0.3s, border-color 0.3s,
-      -webkit-transform 0.3s;
-    transition: background-color 0.3s, border-color 0.3s, -webkit-transform 0.3s;
-    transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
-    transition: background-color 0.3s, transform 0.3s, border-color 0.3s,
-      -webkit-transform 0.3s;
-  }
-
-  .product-step section ul.options li .radio::after {
-    background: url("https://codyhouse.co/demo/product-builder/img/cd-icon-check.svg")
-      no-repeat center center;
-  }
-
-  .product-step section ul.options li .radio::before {
-    border-radius: 50%;
-  }
-
-  .product-step section ul.options li.selected .radio::before {
-    background: #ffb500;
-    border-color: #ffb500;
-    -webkit-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    transform: scale(1.5);
-    -webkit-animation: cd-bounce 0.5s;
-    animation: cd-bounce 0.5s;
-  }
-
-  .product-step section ul.options li.selected .radio::before {
-    background: 0 0;
-    border-color: #ededed;
-    border-right-color: #ffb500;
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-    -webkit-animation: cd-load 0.6s infinite;
-    animation: cd-load 0.6s infinite;
-  }
-
-  .product-step section ul.options li.selected.loaded .radio::before {
-    background: #ffb500;
-    border-color: #ffb500;
-    -webkit-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    transform: scale(1.5);
-    -webkit-animation: cd-bounce 0.5s;
-    animation: cd-bounce 0.5s;
-  }
-
   footer {
     height: 100px;
     padding: 0 2em;
     box-shadow: 0 0 39px rgba(0, 0, 0, 0.1);
+  }
+
+  footer .selected-product::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  footer.disabled .selected-product {
+    -webkit-transform: translateX(-224px) translateY(-50%);
+    -ms-transform: translateX(-224px) translateY(-50%);
+    transform: translateX(-224px) translateY(-50%);
+  }
+  
+  footer.disabled .selected-product img {
+    opacity: 0;
+  }
+
+  footer .selected-product img {
+    width: 197px;
+    padding-right: 27px;
+    margin-right: 27px;
+    border-right: 1px solid #e1e1e1;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    float: left;
+  }
+  
+  footer .selected-product .tot-price {
+    margin-top: 12px;
+    float: left;
+  }
+  
+  footer .selected-product .tot-price span {
+    display: block;
+    color: #5d7c89;
+  }
+  
+  footer .selected-product .tot-price span.total {
+    color: #24221f;
+    font-size: 3.2rem;
+    margin-top: 4px;
   }
 
   footer .footer-nav > ul {
@@ -525,8 +589,7 @@ footer .footer-nav .nav-item.next ul::after {
   }
 
   footer .footer-nav a {
-    padding-left: 1.5em;
-    font-size: 1rem;
+    padding-left: 2.3em;
   }
 
   footer .alert {

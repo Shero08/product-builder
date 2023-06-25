@@ -10,7 +10,11 @@ const SingleCar = ({ carData }) => {
   };
 
   const handleProductClick = () => {
-    setCurrentCar(carData);
+    if(currentCar === null || currentCar?.id !== carData.id){
+      setCurrentCar(carData);
+    } else {
+      setCurrentCar(null);
+    }
   };
 
   return (

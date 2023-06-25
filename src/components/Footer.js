@@ -42,7 +42,7 @@ const Footer = ({ isDisabled }) => {
                 </a>
               </li>
               <li className={selectedStep === 3 ? "visible" : ""}>
-                <a href="#3" onClick={() => setCurrentStep(4)}>
+                <a href="#3">
                   Buy Now
                 </a>
               </li>

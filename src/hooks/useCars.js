@@ -10,7 +10,8 @@ export function useCars() {
 export const CarsProvider = ({ children }) => {
   const [selectedCar, setCurrentCar] = useState(null);
   const [selectedColor, setSelectedColor] = useState(0);
-  const [selectedExtra, setSelectedExtra] = useState([]);
+  const [selectedAccessories, setSelectedAccessories] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(selectedCar?.initialPrice);
 
   useEffect(() => {
     console.log("selectedCar", selectedCar);
@@ -24,8 +25,10 @@ export const CarsProvider = ({ children }) => {
         setCurrentCar,
         selectedColor,
         setSelectedColor,
-        selectedExtra,
-        setSelectedExtra,
+        selectedAccessories,
+        setSelectedAccessories,
+        totalPrice,
+        setTotalPrice
       }}
     >
       {children}

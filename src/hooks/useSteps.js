@@ -1,11 +1,6 @@
 import { useContext, useState, createContext } from "react";
 
-export const StepContext = createContext({
-  selectedStep: 0,
-  goToNextStep: () => {},
-  goToPreviousStep: () => {},
-  setCurrentStep: () => {},
-});
+export const StepContext = createContext({});
 
 export function useSteps() {
   return useContext(StepContext);
@@ -20,7 +15,9 @@ export const StepsProvider = ({ children }) => {
   };
 
   const goToPreviousStep = () => {
-    setCurrentStep(selectedStep - 1);
+    if(selectedStep > 0){
+      setCurrentStep(selectedStep - 1); 
+    }
   };
 
   return (
